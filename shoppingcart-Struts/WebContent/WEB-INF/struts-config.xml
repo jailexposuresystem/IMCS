@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts-config>
+	<form-beans>
+		<form-bean name="loginform" type="com.shoppingcart.actionform.LoginForm" />
+		<form-bean name="cartform" type="com.shoppingcart.actionform.CartForm" />
+	</form-beans>
+	
+	
+	
+	<action-mappings>
+		
+		<action input="/login.jsp" name="loginform" path="/loginaction"
+			scope="session" type="com.shoppingcart.action.LoginAction" 
+			validate="true">
+			<forward name="success" path="/cart.do" />
+			<forward name="failure" path="/login.jsp" />
+		</action>
+		
+		<action input="/cart.jsp"  parameter="method" name="cartform" path="/cart"
+			scope="session" type="com.shoppingcart.action.ItemAction" 
+			validate="true">
+			<forward name="items" path="/index.jsp" />
+		</action>
+		
+		<action input="/cart.jsp" parameter="myMethod" name="cartform"
+			path="/cartaction" scope="session" type="com.shoppingcart.action.CartAction">
+			<forward name="success" path="Cart" />
+			<forward name="summary" path="Summary"/>
+			<forward name="checkout" path="Thankyou" />
+			<forward name="help" path="Help" />
+		</action>
+
+	</action-mappings>
+	
+	
+	 <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+	 
+	<message-resources parameter="resources/Messages" />
+	
+	
+	
+	
+	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+	
+</struts-config>
