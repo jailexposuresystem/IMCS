@@ -1,5 +1,6 @@
 <%@ page import="com.shoppingcart.model.Item,java.util.*" %>
 
+<title>Cart</title>
 <%@ include file = "header.jsp" %>
 	<div class="row">
 		<%@ include file = "menu.jsp" %>

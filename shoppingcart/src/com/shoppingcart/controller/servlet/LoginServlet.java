@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		User user=loginservice.validate(username);
 		
 		if(user!=null && user.getPassword().equals(password)){
-			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", user.getUsername());
 			request.setAttribute("page", request.getParameter("page"));
 			RequestDispatcher rd=getServletContext().getRequestDispatcher("/CartServlet");
 			rd.forward(request, response);
